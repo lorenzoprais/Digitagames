@@ -65,7 +65,6 @@ function falarPalavra(palavra) {
 async function iniciarJogo() {
     // Evitar múltiplas execuções simultâneas
     if (jogoEmAndamento) {
-        console.log("Jogo já está em andamento, ignorando nova chamada");
         return;
     }
     
@@ -118,7 +117,6 @@ async function iniciarJogo() {
 function verificarPalavra() {
     // Evitar múltiplas verificações
     if (!jogoEmAndamento) {
-        console.log("Tentativa de verificar palavra quando jogo não está em andamento");
         return;
     }
     
@@ -176,8 +174,6 @@ function verificarPalavra() {
 // Função para gerar palavra usando a função serverless
 async function gerarPalavraComAPI() {
     try {
-        console.log(`Solicitando palavra para nível ${nivel} via função serverless...`);
-        
         const response = await fetch(`${API_BASE_URL}/generate-words`, {
             method: 'POST',
             headers: {
@@ -190,24 +186,18 @@ async function gerarPalavraComAPI() {
         });
 
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error(`Erro na função serverless: ${response.status} - ${errorText}`);
             throw new Error(`Erro na função serverless: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log('Resposta da função serverless:', data);
         
         if (data.words && data.words.length > 0) {
-            const palavra = data.words[0];
-            console.log(`Palavra gerada pela API (Nível ${nivel}):`, palavra);
-            return palavra;
+            return data.words[0];
         } else {
             throw new Error("Nenhuma palavra retornada pela função serverless");
         }
         
     } catch (error) {
-        console.error("Erro ao gerar palavra com função serverless:", error);
         return null;
     }
 }
@@ -347,7 +337,6 @@ function mostrarNovoNivel() {
         document.getElementById('resultado').style.color = "#FFD700";
         
         // Não iniciar próxima palavra aqui - deixar o setTimeout da verificarPalavra fazer isso
-        console.log(`Subiu para o nível ${nivel}!`);
     }
 }
 
@@ -729,16 +718,7 @@ function limparRanking() {
     }
 }
 
-// Função para log de estado do jogo (debug)
+// Função para log de estado do jogo (debug - desativada)
 function logEstadoJogo(contexto = '') {
-    console.log('=== Estado do Jogo ===');
-    if (contexto) console.log('Contexto:', contexto);
-    console.log('Nível:', nivel);
-    console.log('Pontos:', pontuacao);
-    console.log('Palavras no nível:', palavrasNoNivel);
-    console.log('Palavra atual:', palavraAtual);
-    console.log('Usando IA:', usandoAPI);
-    console.log('Jogo em andamento:', jogoEmAndamento);
-    console.log('Ranking ativo:', mostrandoRankingGlobal ? 'Global' : 'Local');
-    console.log('=====================');
+    // console.log('=== Estado do Jogo ===');
 }
