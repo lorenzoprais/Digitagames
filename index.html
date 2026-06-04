@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee - Typing what you hear</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐝 Spelling Bee</h1>
+        <p>Digite o que você ouve o mais rápido possível!</p>
+        
+        <div class="game-controls">
+            <button id="startButton">🎮 Iniciar Jogo</button>
+            <button id="ouvirButton" disabled>🔊 Ouvir Novamente</button>
+            <button id="resetButton">🔄 Resetar</button>
+        </div>
+        
+        <div class="input-section">
+            <div id="timer">⏰ 5s</div>
+            <input id="inputPalavra" type="text" placeholder="Digite a palavra aqui..." disabled />
+            <br>
+            <button id="verificarButton" disabled>✅ Verificar</button>
+        </div>
+        
+        <div id="resultado"></div>
+        
+        <div class="ranking-controls">
+            <button id="ranking-toggle">📊 Ver Ranking</button>
+            <button id="limpar-ranking">🗑️ Limpar Ranking</button>
+        </div>
+        
+        <div id="ranking-section" style="display: none;">
+            <h3>🏆 Top 10 Local - Hall da Fama</h3>
+            <div id="ranking-list"></div>
+            <div class="ranking-controls" style="margin-top: 10px;">
+                <button id="ranking-switch" style="background: #4ECDC4; color: white; border: none; padding: 8px 16px; border-radius: 5px; margin-right: 10px; cursor: pointer;">🌍 Alternar Global/Local</button>
+            </div>
+        </div>
+        
+        <div class="api-config">
+            <h3>⚙️ Configurações</h3>
+            <div class="config-section">
+                <label for="apiToggle">
+                    <input type="checkbox" id="apiToggle" checked disabled> Usar IA para gerar palavras (sempre ativo)
+                </label>
+                <div id="apiKeySection" style="display: none;">
+                    <p style="color: #888; font-size: 0.9em; margin: 10px 0;">
+                        🔒 A chave da API está configurada de forma segura no servidor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Desenvolvido por <a href="https://github.com/lorenzoprais" target="_blank">lorenzoprais</a></p>
+            <p>Versão: main@ba76736</p>
+            <p>© 2023 CryptStudios</p>
+        </div>
+    </footer>
+    
+    <script src="assets/js/jogo.js"></script>
+</body>
+</html>

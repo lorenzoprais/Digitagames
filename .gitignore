@@ -1,0 +1,32 @@
+# Arquivos de ambiente (contêm chaves secretas)
+.env
+.env.local
+.env.production
+
+# Dependências do Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de build e cache
+.cache/
+dist/
+build/
+.parcel-cache/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Netlify
+.netlify/
