@@ -12,7 +12,6 @@ const palavrasPorNivel = {
 function getRandomModel() {
   const models = [
     'openai/gpt-4o-mini',
-    'qwen/qwen3-32b',
     'deepseek/deepseek-chat'
   ];
   
